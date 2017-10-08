@@ -1,15 +1,23 @@
 pipeline {
-	agent any
+	agent {
+		docker {
+			image 'node:8-alpine'
+		}
+	}
 
 	stages {
 		stage('build') {
 			steps {
-				echo 'Building...'	
+				echo 'Building...'
+				sh autogen.sh
+				./configure
+
 			}
 		}
 		stage('Test') {
 			steps {
 				echo 'Testing...'
+				sh 'node --version'
 			}
 		}
 		stage('Deploy') {
@@ -19,4 +27,3 @@ pipeline {
 		}
 	}
 }
-
