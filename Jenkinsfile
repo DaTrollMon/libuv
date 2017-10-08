@@ -9,15 +9,12 @@ pipeline {
 		stage('build') {
 			steps {
 				echo 'Building...'
-				sh autogen.sh
-				./configure
-
 			}
 		}
 		stage('Test') {
 			steps {
 				echo 'Testing...'
-				sh node --version
+				sh 'node --version'
 			}
 		}
 		stage('Deploy') {
