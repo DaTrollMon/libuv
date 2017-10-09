@@ -5,7 +5,7 @@ pipeline {
 		stage('build') {
 			steps {
 				echo 'Building...'
-				echo ${env.WORKSPACE}
+				echo "${env.WORKSPACE}"
 				sh 'autogen.sh'
 				sh 'configure'
 				sh 'make'
