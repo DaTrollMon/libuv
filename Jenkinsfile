@@ -5,12 +5,13 @@ pipeline {
 		stage('build') {
 			steps {
 				echo 'Building...'
-				echo "${env.WORKSPACE}"
-				sh 'autogen.sh'
-				sh 'configure'
-				sh 'make'
-				sh 'make check'
-				sh 'make install'
+				dir "${env.WORKSPACE}" {
+					sh 'autogen.sh'
+					sh 'configure'
+					sh 'make'
+					sh 'make check'
+					sh 'make install'					
+				}
 				slackSend color: "#439FE0", message: "Build started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 			}
 		}
