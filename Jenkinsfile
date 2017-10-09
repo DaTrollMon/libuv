@@ -3,19 +3,17 @@ pipeline {
 
 	stages {
 		stage('Build') {
-			node('docker') {
-				steps {
-					echo 'Building...'
-					dir "${env.WORKSPACE}" {
-						sh 'autogen.sh'
-						sh 'configure'
-						sh 'make'
-						sh 'make check'
-						sh 'make install'
-					}
+			steps {
+				echo 'Building...'
+				dir "${env.WORKSPACE}" {
+					sh 'autogen.sh'
+					sh 'configure'
+					sh 'make'
+					sh 'make check'
+					sh 'make install'
 				}
-				slackSend color: "#439FE0", message: "Build started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 			}
+			slackSend color: "#439FE0", message: "Build started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 		}
 		stage('Test') {
 			steps {
