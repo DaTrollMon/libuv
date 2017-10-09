@@ -5,9 +5,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo 'Building...'
-				echo "pwd:"
-				pwd
-				dir "${env.WORKSPACE}" {
+				dir("${env.WORKSPACE}") {
 					sh 'autogen.sh'
 					sh 'configure'
 					sh 'make'
