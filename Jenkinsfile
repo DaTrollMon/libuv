@@ -5,7 +5,7 @@ pipeline {
 		stage('build') {
 			steps {
 				echo 'Building...'
-
+				echo pwd
 				slackSend color: "#439FE0", message: "Build started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 			}
 		}
