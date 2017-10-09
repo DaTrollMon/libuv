@@ -18,6 +18,11 @@ pipeline {
 			steps {
 				echo 'Testing...'
 				slackSend "Tests started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+				dir("${env.WORKSPACE}") {
+					sh './gyp_uv.py -f make'
+					sh 'make -C out'
+					sh './out/Debug/run-tests'
+				}
 			}
 		}
 		stage('Deploy') {
