@@ -31,6 +31,10 @@ pipeline {
 			deleteDir()
 		}
 		success {
+      slackSend color: 'good',
+                message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+    }
+		success {
 			echo 'I succeeded'
 		}
 		unstable {
