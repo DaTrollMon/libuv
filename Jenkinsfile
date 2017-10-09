@@ -6,8 +6,8 @@ pipeline {
 			steps {
 				echo 'Building...'
 				dir("${env.WORKSPACE}") {
-					sh 'autogen.sh'
-					sh 'configure'
+					sh './autogen.sh'
+					sh './configure'
 					sh 'make'
 					sh 'make check'
 					sh 'make install'
