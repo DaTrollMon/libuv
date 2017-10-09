@@ -25,22 +25,22 @@ pipeline {
 			}
 		}
 	}
-}
-post {
-	always {
-		echo 'Cleanup'
-		deleteDir()
-	}
-	success {
-		echo 'I succeeded'
-	}
-	unstable {
-		echo "I\'m unstable"
-	}
-	failure {
-		echo 'I failed'
-	}
-	changed {
-		echo 'Things were different before'
+	post {
+		always {
+			echo 'Cleanup'
+			deleteDir()
+		}
+		success {
+			echo 'I succeeded'
+		}
+		unstable {
+			echo "I\'m unstable"
+		}
+		failure {
+			echo 'I failed'
+		}
+		changed {
+			echo 'Things were different before'
+		}
 	}
 }
