@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	stages {
-		stage('build') {
+		stage('Build') {
 			node('docker') {
 				steps {
 					echo 'Building...'
