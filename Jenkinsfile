@@ -1,7 +1,5 @@
 pipeline {
 	agent any
-
-	stages {
 		stage('Build') {
 			milestone()
 			node('docker') {
@@ -50,4 +48,3 @@ pipeline {
 			echo 'Things were different before'
 		}
 	}
-}
