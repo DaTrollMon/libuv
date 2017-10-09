@@ -1,9 +1,11 @@
 pipeline {
 	agent any
+
+	stages {
 		stage('Build') {
-			milestone()
-			node('docker') {
+			steps {
 				echo 'Building...'
+				echo "WORKSPACE: ${env.WORKSPACE}"
 				dir "${env.WORKSPACE}" {
 					sh 'autogen.sh'
 					sh 'configure'
@@ -15,15 +17,13 @@ pipeline {
 			}
 		}
 		stage('Test') {
-			milestone()
-			node {
+			steps {
 				echo 'Testing...'
 				slackSend "Tests started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 			}
 		}
 		stage('Deploy') {
-			milestone()
-			node {
+			steps {
 				echo 'Deploying...'
 			}
 		}
@@ -48,3 +48,4 @@ pipeline {
 			echo 'Things were different before'
 		}
 	}
+}
