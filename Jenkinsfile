@@ -19,7 +19,7 @@ pipeline {
 				echo 'Testing...'
 				slackSend "Tests started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 				dir("${env.WORKSPACE}") {
-					checkout
+					//checkout
 					changelog: false,
 					poll: false,
 					scm: [$class: 'GitSCM', branches: [[name: '*/master']],
