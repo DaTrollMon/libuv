@@ -27,9 +27,9 @@ pipeline {
 					// 	extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'gyp']],
 					// 	submoduleCfg: [],
 					// 	userRemoteConfigs: [[url: 'https://chromium.googlesource.com/external/gyp.git']]]
-					// sh './gyp_uv.py -f make'
-					// sh 'make -C out'
-					// sh './out/Debug/run-tests'
+					sh './gyp_uv.py -f make'
+					sh 'make -C out'
+					sh './out/Debug/run-tests'
 				}
 			}
 		}
